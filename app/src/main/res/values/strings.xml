@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Bills IA</string>
+    <string name="title_activity_success">Activity Success</string>
+    <string name="title_activity_failure">FailureActivity</string>
+</resources>

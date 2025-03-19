@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "363521444662",
+    "project_id": "bills-ia",
+    "storage_bucket": "bills-ia.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363521444662:android:09e2616150aa108e27c197",
+        "android_client_info": {
+          "package_name": "com.example.billsia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVMjOt-HvpsdMKJmoTUINzpGVMtjLoeTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

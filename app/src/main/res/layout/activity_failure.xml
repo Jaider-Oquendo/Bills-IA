@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/backgroundColor"
+    android:orientation="vertical"
+    tools:context=".FailureActivity">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_error"
+        android:contentDescription="Error Icon"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/failureMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¡Error en el login!"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/errorText"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/failureDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Usuario o contraseña incorrectos."
+        android:textSize="16sp"
+        android:textColor="@color/secondaryText"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"/>
+
+    <Button
+        android:id="@+id/btnRetry"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Intentar de nuevo"
+        android:backgroundTint="@color/buttonColor"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>
