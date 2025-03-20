@@ -2,4 +2,6 @@
     <string name="app_name">Bills IA</string>
     <string name="title_activity_success">Activity Success</string>
     <string name="title_activity_failure">FailureActivity</string>
+    <string name="default_web_client_id">106129064299868468398</string>
+
 </resources>

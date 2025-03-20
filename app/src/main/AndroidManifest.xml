@@ -13,17 +13,17 @@
         android:theme="@style/Theme.BillsIA"
         tools:targetApi="31">
         <activity
-            android:name=".FailureActivity"
+            android:name=".RegisterActivity"
             android:exported="false"
             android:label="Login No Exitoso"
             android:theme="@style/Theme.BillsIA" />
         <activity
-            android:name=".SuccessActivity"
+            android:name=".HomeActivity"
             android:exported="false"
             android:label="Login Exitoso"
             android:theme="@style/Theme.BillsIA" />
         <activity
-            android:name=".MainActivity"
+            android:name=".AuthActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.BillsIA">

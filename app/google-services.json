@@ -12,7 +12,20 @@
           "package_name": "com.example.billsia"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "363521444662-i8tpcnoi1eo8b17qglqtuoctaod158as.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.billsia",
+            "certificate_hash": "fafac6043e7a584750b1633f7b5f3174f2b2648c"
+          }
+        },
+        {
+          "client_id": "363521444662-fljhfm9le5c9v42g0obj9k00erge3hfl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCVMjOt-HvpsdMKJmoTUINzpGVMtjLoeTw"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "363521444662-fljhfm9le5c9v42g0obj9k00erge3hfl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
