@@ -23,6 +23,11 @@
             android:label="Login Exitoso"
             android:theme="@style/Theme.BillsIA" />
         <activity
+            android:name=".FragmentPerfil"
+            android:exported="false"
+            android:label="Editar Datos"
+            android:theme="@style/Theme.BillsIA" />
+        <activity
             android:name=".AuthActivity"
             android:exported="true"
             android:label="@string/app_name"

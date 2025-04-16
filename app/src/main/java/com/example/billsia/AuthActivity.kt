@@ -15,6 +15,7 @@ import androidx.activity.result.IntentSenderRequest
 
 class AuthActivity : AppCompatActivity() {
 
+    // Elementos de la UI
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: SignInClient
     private lateinit var emailField: EditText
@@ -46,7 +47,7 @@ class AuthActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         googleSignInClient = Identity.getSignInClient(this)
-
+// Enlace con los elementos de la UI
         emailField = findViewById(R.id.etEmail)
         passwordField = findViewById(R.id.etPassword)
         loginButton = findViewById(R.id.btnLogin)

@@ -11,7 +11,18 @@
     <!-- Añadi nueva paleta de colores -->
     <color name="primaryText">#FFFFFF</color> <!-- Blanco -->
     <color name="secondaryText">#B0BEC5</color> <!-- Gris claro -->
-    <color name="backgroundColor">#1E1E2E</color> <!-- Azul oscuro elegante -->
-    <color name="buttonColor">#FBC02D</color> <!-- Dorado financiero -->
     <color name="errorText">#E57373</color> <!-- Rojo suave para errores -->
+    <color name="primaryColor">#004B87</color> <!-- Azul corporativo fuerte -->
+    <color name="primaryDarkColor">#003366</color> <!-- Azul más oscuro para contrastes -->
+    <color name="accentColor">#00A86B</color> <!-- Verde financiero (confianza y crecimiento) -->
+    <color name="backgroundColor">#F5F7FA</color> <!-- Gris muy claro, casi blanco -->
+    <color name="textPrimary">#212121</color> <!-- Gris oscuro para textos -->
+    <color name="textSecondary">#757575</color> <!-- Gris más claro para textos secundarios -->
+    <color name="buttonColor">#0066CC</color> <!-- Azul vibrante para botones -->
+    <color name="buttonTextColor">#FFFFFF</color> <!-- Blanco para el texto de los botones -->
+    <color name="inputBackground">#FFFFFF</color> <!-- Blanco para fondos de los EditText -->
+    <color name="borderColor">#D1D9E6</color>
+    <color name="light_gray">#D1D9E6</color>
+    <color name="dark_blue">#002D62</color>
+
 </resources>
