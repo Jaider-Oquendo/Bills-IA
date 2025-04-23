@@ -1,1 +1,46 @@
-/build
+# Archivos de Android Studio
+.idea/
+*.iml
+.gradle/
+local.properties
+
+# Archivos de compilación
+/build/
+*/build/
+
+# Archivos temporales
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos generados
+*.apk
+*.ap_
+*.dex
+*.class
+
+# Archivos de configuración personal
+.vscode/
+
+# Claves y archivos sensibles
+app/src/main/res/raw/service_account.json
+
+# Archivos de entorno
+.env
+.env.*
+
+# Cache de Jetpack Compose
+*.cache
+
+# Archivos de test y coverage
+coverage/
+*.ec
+
+# Firebase/Google Services
+google-services.json
+service_account.json
