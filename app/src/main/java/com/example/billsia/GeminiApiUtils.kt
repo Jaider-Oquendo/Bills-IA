@@ -13,44 +13,18 @@ import org.json.JSONObject
 import java.io.InputStream
 
 object GeminiApiUtils {
-
     private const val TAG = "GeminiApiUtils"
-
-    fun getAccessToken(context: Context): String {
-        try {
-            Log.d(TAG, "Abriendo archivo JSON desde raw...")
-            val inputStream: InputStream = context.resources.openRawResource(R.raw.service_account)
-
-            Log.d(TAG, "Parseando ServiceAccountCredentials...")
-            val credentials = ServiceAccountCredentials.fromStream(inputStream)
-
-            Log.d(TAG, "Solicitando token de acceso...")
-            val accessToken: AccessToken = credentials.refreshAccessToken()
-
-            Log.d(TAG, "Token recibido: ${accessToken.tokenValue}")
-            return accessToken.tokenValue
-        } catch (e: Exception) {
-            Log.e(TAG, "Error al obtener el token de acceso: ${e.message}", e)
-            throw RuntimeException("Error al obtener el token de acceso: ${e.message}")
-        }
-    }
-
     suspend fun getGeminiResponse(prompt: String, context: Context): String {
         Log.d(TAG, "Iniciando solicitud a Gemini API...")
 
-        val token: String = try {
-            getAccessToken(context)
-        } catch (e: Exception) {
-            return "Error al obtener el token: ${e.message}"
-        }
-
         val client = OkHttpClient()
-        val url =
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=TU_API_KEY"
+
+        val url = "https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash-lite-001:generateContent?key=AIzaSyDc-YAMW1FR3xfvYMz5oIe3R-vjx3-ug2k" // solo API key
 
         val json = JSONObject().apply {
             put("contents", JSONArray().apply {
                 put(JSONObject().apply {
+                    put("role", "user") // agregado el rol
                     put("parts", JSONArray().apply {
                         put(JSONObject().apply {
                             put("text", prompt)
@@ -65,9 +39,8 @@ object GeminiApiUtils {
         val body = json.toString().toRequestBody("application/json".toMediaType())
         val request = Request.Builder()
             .url(url)
-            .addHeader("Authorization", "Bearer $token")
             .post(body)
-            .build()
+            .build() // sin Authorization
 
         return try {
             val response = client.newCall(request).execute()
@@ -95,3 +68,4 @@ object GeminiApiUtils {
         }
     }
 }
+

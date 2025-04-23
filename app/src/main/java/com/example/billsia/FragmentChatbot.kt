@@ -8,42 +8,49 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.example.billsia.databinding.FragmentChatbotBinding
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ChatbotFragment : Fragment() {
 
-    private lateinit var inputTexto: EditText
-    private lateinit var btnEnviar: TextView
-    private lateinit var respuesta: TextView
+    private var _binding: FragmentChatbotBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding = inflater.inflate(R.layout.fragment_chatbot, container, false)
+    ): View {
+        _binding = FragmentChatbotBinding.inflate(inflater, container, false)
 
-        inputTexto = binding.findViewById(R.id.inputTexto)
-        btnEnviar = binding.findViewById(R.id.btnEnviar)
-        respuesta = binding.findViewById(R.id.respuesta)
-
-        btnEnviar.setOnClickListener {
-            val prompt = inputTexto.text.toString()
+        binding.btnEnviar.setOnClickListener {
+            val prompt = binding.inputTexto.text.toString()
             if (prompt.isNotEmpty()) {
                 sendRequestToGemini(prompt)
             }
         }
 
-        return binding
+        return binding.root
     }
 
     private fun sendRequestToGemini(prompt: String) {
-        lifecycleScope.launch {
+        lifecycleScope.launch(Dispatchers.IO) {
             try {
                 val response = GeminiApiUtils.getGeminiResponse(prompt, requireContext())
-                respuesta.text = response
+                withContext(Dispatchers.Main) {
+                    binding.respuesta.text = response
+                }
             } catch (e: Exception) {
-                respuesta.text = "Error al hacer la solicitud: ${e.message}"
+                withContext(Dispatchers.Main) {
+                    binding.respuesta.text = "Error al hacer la solicitud: ${e.message}"
+                }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
