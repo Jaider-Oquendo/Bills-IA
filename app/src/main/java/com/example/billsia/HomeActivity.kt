@@ -2,6 +2,13 @@ package com.example.billsia
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.example.billsia.fragments.EducativoFragment
+import com.example.billsia.fragments.TributariaFragment
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -57,12 +64,14 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupViewPager() {
         viewPager.adapter = object : FragmentStateAdapter(this) {
-            override fun getItemCount(): Int = 4
+
+            override fun getItemCount(): Int = 5
             override fun createFragment(position: Int): Fragment {
                 return when (position) {
                     0 -> FragmentFinanciera()
-                    1 -> FragmentMensajes()
-                    2 -> FragmentTributaria()
+                    1 -> EducativoFragment()
+                    2 -> TributariaFragment()
+                    3 -> ChatbotFragment()
                     else -> FragmentPerfil()
                 }
             }
@@ -77,9 +86,10 @@ class HomeActivity : AppCompatActivity() {
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_financiera -> viewPager.currentItem = 0
-                R.id.nav_mensaje -> viewPager.currentItem = 1
+                R.id.nav_educativo -> viewPager.currentItem = 1
                 R.id.nav_tributaria -> viewPager.currentItem = 2
-                R.id.nav_perfil -> viewPager.currentItem = 3
+                R.id.nav_Chatbot -> viewPager.currentItem = 3
+                R.id.nav_perfil -> viewPager.currentItem = 4
             }
             true
         }

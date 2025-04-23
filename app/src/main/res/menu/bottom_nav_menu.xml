@@ -12,9 +12,15 @@
         android:icon="@drawable/ic_finance" />
 
     <item
-        android:id="@+id/nav_mensaje"
-        android:title="Mensaje"
-        android:icon="@drawable/ic_google" />
+        android:id="@+id/nav_educativo"
+        android:icon="@drawable/baseline_article"
+        android:title="Educativo" />
+
+    <item
+        android:id="@+id/nav_Chatbot"
+        android:icon="@drawable/baseline_assistant"
+        android:title="IA" />
+
 
     <item
         android:id="@+id/nav_perfil"
