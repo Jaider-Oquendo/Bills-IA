@@ -1,10 +1,9 @@
 plugins {
-
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-// Add the Google services Gradle plugin
     id("com.android.application")
     id("com.google.gms.google-services")
+    kotlin("kapt")
 }
 
 android {
@@ -30,15 +29,27 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
+
     buildFeatures {
         compose = true
+        viewBinding = true  // Habilitar ViewBinding
+        dataBinding = true  // Habilitar DataBinding
+    }
+
+    packagingOptions {
+        exclude("META-INF/DEPENDENCIES")
+        exclude("META-INF/LICENSE")
+        exclude("META-INF/LICENSE.txt")
+        exclude("META-INF/NOTICE")
     }
 }
 
@@ -61,15 +72,27 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-
     implementation ("androidx.appcompat:appcompat:1.6.1")
     implementation ("com.google.android.material:material:1.9.0")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
-// Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:33.10.0"))
     implementation("com.google.firebase:firebase-analytics")
-
     implementation ("com.google.firebase:firebase-auth-ktx:22.1.1")
     implementation ("com.google.android.gms:play-services-auth:20.7.0")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation ("androidx.room:room-runtime:2.6.1")
+    kapt ("androidx.room:room-compiler:2.6.1")
+    implementation ("androidx.room:room-ktx:2.6.1")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    // JSON
+    implementation("org.json:json:20231013")
+
+// Google Auth Library
+    implementation("com.google.auth:google-auth-library-oauth2-http:1.19.0")
+
+// OkHttp (cliente HTTP para enviar peticiones)
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+
 
 }

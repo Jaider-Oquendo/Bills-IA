@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_tributaria"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:padding="24dp">
+
+    <!-- Guía para centrar verticalmente -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tituloTributaria"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Formulario de Declaración de Renta"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#3F51B5"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toTopOf="@id/guidelineCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Ingreso Anual -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ingresoLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tituloTributaria"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputIngresoAnual"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:hint="Ingreso Anual (en millones)"
+            android:inputType="numberDecimal"
+            android:padding="12dp"
+            android:background="@drawable/bg_edittext_rounded"
+            android:textColor="#000000"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Dependientes -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dependientesLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintTop_toBottomOf="@id/ingresoLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputDependientes"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+        android:hint="Número de Dependientes"
+        android:inputType="number"
+        android:padding="12dp"
+        android:background="@drawable/bg_edittext_rounded"
+        android:textColor="#000000"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Botón -->
+    <Button
+        android:id="@+id/btnEnviar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Verificar si debe declarar"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#3F51B5"
+        android:layout_marginTop="8dp"
+        android:padding="14dp"
+        app:layout_constraintTop_toBottomOf="@id/dependientesLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Resultado -->
+    <TextView
+        android:id="@+id/textResultado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/btnEnviar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

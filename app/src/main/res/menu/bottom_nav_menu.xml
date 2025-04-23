@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_financiera"
+        android:title="Financiera"
+        android:icon="@drawable/ic_finance" />
+
+    <item
+        android:id="@+id/nav_tributaria"
+        android:title="Tributaria"
+        android:icon="@drawable/ic_finance" />
+
+    <item
+        android:id="@+id/nav_educativo"
+        android:icon="@drawable/baseline_article"
+        android:title="Educativo" />
+
+    <item
+        android:id="@+id/nav_Chatbot"
+        android:icon="@drawable/baseline_assistant"
+        android:title="IA" />
+
+
+    <item
+        android:id="@+id/nav_perfil"
+        android:title="Perfil"
+        android:icon="@drawable/ic_success" />
+
+</menu>
