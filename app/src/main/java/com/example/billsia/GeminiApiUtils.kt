@@ -2,19 +2,16 @@ package com.example.billsia
 
 import android.content.Context
 import android.util.Log
-import com.google.auth.oauth2.ServiceAccountCredentials
-import com.google.auth.oauth2.AccessToken
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.MediaType.Companion.toMediaType
 import org.json.JSONArray
 import org.json.JSONObject
-import java.io.InputStream
 
 object GeminiApiUtils {
     private const val TAG = "GeminiApiUtils"
-    suspend fun getGeminiResponse(prompt: String, context: Context): String {
+     fun getGeminiResponse(prompt: String, context: Context): String {
         Log.d(TAG, "Iniciando solicitud a Gemini API...")
 
         val client = OkHttpClient()

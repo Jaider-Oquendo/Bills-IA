@@ -1,4 +1,5 @@
 package com.example.billsia
+
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,12 +7,9 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.example.billsia.fragments.EducativoFragment
-import com.example.billsia.fragments.TributariaFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
-
     private lateinit var viewPager: ViewPager2
     private lateinit var bottomNavigation: BottomNavigationView
     private lateinit var auth: FirebaseAuth
@@ -47,7 +45,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initializeComponents() {
         viewPager = findViewById(R.id.viewPager)
-        bottomNavigation = findViewById(R.id.bottomNavigation)
+        bottomNavigation = findViewById(R.id.bottom_Navigation)
     }
 
     private fun setupViewPager() {
@@ -75,7 +73,7 @@ class HomeActivity : AppCompatActivity() {
                 R.id.nav_financiera -> viewPager.currentItem = 0
                 R.id.nav_educativo -> viewPager.currentItem = 1
                 R.id.nav_tributaria -> viewPager.currentItem = 2
-                R.id.nav_Chatbot -> viewPager.currentItem = 3
+                R.id.nav_chatbot -> viewPager.currentItem = 3
                 R.id.nav_perfil -> viewPager.currentItem = 4
             }
             true

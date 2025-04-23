@@ -1,4 +1,4 @@
-package com.example.billsia.adapter
+package com.example.billsia
 
 import android.content.Intent
 import android.net.Uri
@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.billsia.databinding.ItemArticuloBinding
-import com.example.billsia.model.Articulo
 
 class ArticuloAdapter(private val listaArticulos: List<Articulo>) : RecyclerView.Adapter<ArticuloAdapter.ArticuloViewHolder>() {
 

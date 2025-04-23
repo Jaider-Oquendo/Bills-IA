@@ -1,4 +1,4 @@
-package com.example.billsia.fragments
+package com.example.billsia
 
 import android.os.Bundle
 import android.view.LayoutInflater

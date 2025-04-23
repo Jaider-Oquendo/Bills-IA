@@ -1,4 +1,4 @@
-package com.example.billsia.fragments
+package com.example.billsia
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,16 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.billsia.adapter.ArticuloAdapter
 import com.example.billsia.databinding.FragmentEducativoBinding
-import com.example.billsia.model.Articulo
 
 class EducativoFragment : Fragment() {
 
     private var _binding: FragmentEducativoBinding? = null
     private val binding get() = _binding!!
 
-    // Lista de artículos, ahora con el artículo de la DIAN agregado al inicio
+    // Lista de artículos
     private val listaArticulos = listOf(
         Articulo(
             id = 0,

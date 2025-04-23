@@ -1,28 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Base Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 
-    <!-- Añadi nueva paleta de colores -->
-    <color name="primaryText">#FFFFFF</color> <!-- Blanco -->
-    <color name="secondaryText">#B0BEC5</color> <!-- Gris claro -->
-    <color name="errorText">#E57373</color> <!-- Rojo suave para errores -->
-    <color name="primaryColor">#004B87</color> <!-- Azul corporativo fuerte -->
-    <color name="primaryDarkColor">#003366</color> <!-- Azul más oscuro para contrastes -->
-    <color name="accentColor">#00A86B</color> <!-- Verde financiero (confianza y crecimiento) -->
-    <color name="backgroundColor">#F5F7FA</color> <!-- Gris muy claro, casi blanco -->
-    <color name="textPrimary">#212121</color> <!-- Gris oscuro para textos -->
-    <color name="textSecondary">#757575</color> <!-- Gris más claro para textos secundarios -->
-    <color name="buttonColor">#0066CC</color> <!-- Azul vibrante para botones -->
-    <color name="buttonTextColor">#FFFFFF</color> <!-- Blanco para el texto de los botones -->
-    <color name="inputBackground">#FFFFFF</color> <!-- Blanco para fondos de los EditText -->
-    <color name="borderColor">#D1D9E6</color>
-    <color name="light_gray">#D1D9E6</color>
-    <color name="dark_blue">#002D62</color>
+    <!-- Primary Theme -->
+    <color name="primaryColor">#1A73E8</color> <!-- Azul moderno (Google Style) -->
+    <color name="primaryDarkColor">#174EA6</color>
+    <color name="accentColor">#00C853</color> <!-- Verde vibrante de éxito (Material Design) -->
 
+    <!-- Backgrounds -->
+    <color name="backgroundColor">#FAFAFA</color> <!-- Muy suave, casi blanco -->
+    <color name="inputBackground">#FFFFFF</color>
+    <color name="borderColor">#E0E0E0</color> <!-- Bordes sutiles -->
+
+    <!-- Text Colors -->
+    <color name="textPrimary">#212121</color> <!-- Texto principal (casi negro) -->
+    <color name="textSecondary">#616161</color> <!-- Texto secundario (gris suave) -->
+    <color name="primaryText">#FFFFFF</color>
+    <color name="secondaryText">#B0BEC5</color>
+
+    <!-- Button Colors -->
+    <color name="buttonColor">#2962FF</color> <!-- Azul vibrante para CTA -->
+    <color name="buttonTextColor">#FFFFFF</color>
+
+    <!-- Error / Warnings -->
+    <color name="errorText">#D32F2F</color> <!-- Rojo de error accesible -->
+
+    <!-- Navigation -->
+    <color name="nav_selected">#1E88E5</color>
+    <color name="nav_unselected">#B0BEC5</color>
+
+    <!-- Optional accents -->
+    <color name="light_gray">#F0F0F0</color>
+    <color name="dark_blue">#102027</color> <!-- Para headers o elementos oscuros -->
+
+    <!-- Legacy (opcional, por compatibilidad) -->
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
 </resources>

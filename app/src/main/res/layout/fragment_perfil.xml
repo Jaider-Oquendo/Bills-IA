@@ -8,42 +8,74 @@
     android:gravity="center"
     android:background="@color/white">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="4dp"/>
+
     <EditText
         android:id="@+id/etNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre"
+        android:hint="Ingresa tu nombre"
         android:background="@drawable/input_field"
         android:padding="12dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apellido"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="4dp"/>
 
     <EditText
         android:id="@+id/etApellido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Apellido"
+        android:hint="Ingresa tu apellido"
         android:background="@drawable/input_field"
         android:padding="12dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Teléfono"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="4dp"/>
 
     <EditText
         android:id="@+id/etTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Teléfono"
+        android:hint="Ingresa tu número"
         android:inputType="phone"
         android:background="@drawable/input_field"
         android:padding="12dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dirección"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="4dp"/>
 
     <EditText
         android:id="@+id/etDireccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Dirección"
+        android:hint="Ingresa tu dirección"
         android:background="@drawable/input_field"
         android:padding="12dp"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="20dp"/>
 
     <Button
         android:id="@+id/btnSave"
@@ -52,8 +84,9 @@
         android:text="Guardar cambios"
         android:backgroundTint="@color/dark_blue"
         android:textColor="@color/white"
-        android:padding="12dp"
+        android:padding="14dp"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 </LinearLayout>
 

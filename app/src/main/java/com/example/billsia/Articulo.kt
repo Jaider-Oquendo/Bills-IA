@@ -1,4 +1,4 @@
-package com.example.billsia.model
+package com.example.billsia
 
 data class Articulo(
     val id: Int,

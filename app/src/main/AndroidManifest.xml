@@ -15,18 +15,14 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="false"
-            android:label="Login No Exitoso"
+            android:label="Registrate"
             android:theme="@style/Theme.BillsIA" />
         <activity
             android:name=".HomeActivity"
             android:exported="false"
-            android:label="Login Exitoso"
+            android:label="Bienvenido"
             android:theme="@style/Theme.BillsIA" />
-        <activity
-            android:name=".FragmentPerfil"
-            android:exported="false"
-            android:label="Editar Datos"
-            android:theme="@style/Theme.BillsIA" />
+
         <activity
             android:name=".AuthActivity"
             android:exported="true"

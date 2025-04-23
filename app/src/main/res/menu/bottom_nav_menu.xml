@@ -3,28 +3,26 @@
 
     <item
         android:id="@+id/nav_financiera"
-        android:title="Financiera"
+        android:title="Finanzas"
         android:icon="@drawable/ic_finance" />
 
     <item
         android:id="@+id/nav_tributaria"
-        android:title="Tributaria"
-        android:icon="@drawable/ic_finance" />
+        android:title="Tributos"
+        android:icon="@drawable/ic_tax" />
 
     <item
         android:id="@+id/nav_educativo"
-        android:icon="@drawable/baseline_article"
-        android:title="Educativo" />
+        android:title="Aprende"
+        android:icon="@drawable/baseline_article" />
 
     <item
-        android:id="@+id/nav_Chatbot"
-        android:icon="@drawable/baseline_assistant"
-        android:title="IA" />
-
+        android:id="@+id/nav_chatbot"
+        android:title="Asistente"
+        android:icon="@drawable/baseline_assistant" />
 
     <item
         android:id="@+id/nav_perfil"
         android:title="Perfil"
-        android:icon="@drawable/ic_success" />
-
+        android:icon="@drawable/ic_user" />
 </menu>
