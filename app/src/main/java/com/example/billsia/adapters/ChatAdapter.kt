@@ -63,65 +63,44 @@ class ChatAdapter(
 
         }
 
-        //funcion para formatear texto.
         private fun formatearTexto(texto: String): String {
             var html = texto.trim()
 
-            // Normalizar espacios entre asteriscos mal escritos (ej. "* *" → "**")
+            // Asteriscos mal escritos como "* *"
             html = html.replace(Regex("\\*\\s+\\*"), "**")
-
-            // Bloques de código
-            html = html.replace(Regex("```(.?)```", RegexOption.DOT_MATCHES_ALL)) {
-                "<pre><code>${it.groupValues[1]}</code></pre>"
+            // Títulos numerados tipo "**1. Texto:**"
+            html = html.replace(Regex("\\*\\*(\\d+\\. .+?):\\*\\*")) {
+                "<h3 style='margin-top: 1em; font-size: 10px; color: #2c3e50;'>${it.groupValues[1]}</h3>"
             }
-
-            // Código en línea
-            html = html.replace(Regex("`([^`]+)`")) {
-                "<code>${it.groupValues[1]}</code>"
+            // Títulos de cierre tipo "**En resumen...**"
+            html = html.replace(Regex("\\*\\*(En resumen.*?)\\*\\*")) {
+                "<h3 style='margin-top: 1.5em; font-size: 10px; color: #2c3e50;'>${it.groupValues[1]}</h3>"
             }
-
-            // Títulos o encabezados marcados con **texto:**
-            html = html.replace(Regex("\\*\\*\\s*(.+?)\\s*:\\s*\\*\\*", RegexOption.MULTILINE)) {
-                "<b style='font-size: 16px;'>${it.groupValues[1].trim()}:</b>"
+            // Subtítulos en negrita (**texto**)
+            html = html.replace(Regex("\\*\\*([^*]+?)\\*\\*")) {
+                "<strong>${it.groupValues[1]}</strong>"
             }
-
-            // Negrita general: **texto**
-            html = html.replace(Regex("\\*\\*(.+?)\\*\\*")) {
-                "<b>${it.groupValues[1].trim()}</b>"
+            // Procesar listas con viñetas y agruparlas en <ul>
+            html = html.replace(Regex("(?m)(^\\*\\s+.+(?:\\n\\*\\s+.+)*)")) { match ->
+                val items = match.value.trim().lines().joinToString("\n") { line ->
+                    val content = line.replace(Regex("^\\*\\s+"), "")
+                    "<li style='list-style-type: disc; margin-left: 1em;'>$content</li>"
+                }
+                "<ul style='margin-left: 1.2em; margin-bottom: 1em;'>$items</ul>"
             }
-
-            // Negrita simple (mal escrita con espacios): * texto *
-            html = html.replace(Regex("\\*\\s*(.+?)\\s*\\*")) {
-                "<b>${it.groupValues[1].trim()}</b>"
+            // Reemplazar cualquier * que no forme parte de lista o negrita por •
+            html = html.replace(Regex("(?<!\\*)\\*(?!\\*)"), "•")
+            // Saltos de línea dobles como separación de párrafos (evitar <br> después de <ul>)
+            html = html.replace(Regex("(?<!</ul>)\\n\\n+")) {
+                "<br><br>"
             }
-
-            // Cursiva: _texto_
-            html = html.replace(Regex("_(.?)_")) {
-                "<i>${it.groupValues[1]}</i>"
-            }
-
-            // Listas: líneas que inician con *
-            html = html.replace(Regex("(?m)^\\*\\s+(.)")) {
-                "<li>${it.groupValues[1]}</li>"
-            }
-
-            // Agrupar elementos <li> consecutivos en <ul>
-            html = html.replace(Regex("((<li>.*?</li>\\s*)+)", RegexOption.DOT_MATCHES_ALL)) {
-                "<ul style='margin-left: 1em;'>${it.groupValues[1].trim()}</ul>"
-            }
-
-            // Enlaces estilo Markdown
-            html = html.replace(Regex("\\[(.*?)\\]\\((.*?)\\)")) {
-                "<a href='${it.groupValues[2]}'>${it.groupValues[1]}</a>"
-            }
-
-            // Saltos de línea simples
+            // Saltos de línea simples → separación de elementos visuales
             html = html.replace("\n", "<br>")
-
+            // Retornar HTML envuelto en un contenedor estilizado
             return """
-    <div style="font-family: sans-serif; line-height: 1.6; color: #212121;">
-        $html
-    </div>
+        <div style="font-family: sans-serif; font-size: 10px; line-height: 1.5; color: #2d2d2d;">
+            $html
+        </div>
     """.trimIndent()
         }
 
