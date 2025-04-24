@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.billsia.data.dao.MensajeDao
 import com.example.billsia.data.entities.UserEntity
 import com.example.billsia.data.dao.UserDao
+import com.example.billsia.data.entities.Mensaje
 
-@Database(entities = [UserEntity::class], version = 1, exportSchema = false)
+@Database(entities = [UserEntity::class, Mensaje::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun mensajeDao(): MensajeDao
 
     companion object {
         @Volatile
@@ -22,7 +25,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "app_database"
                 )
-                    .fallbackToDestructiveMigration() // Evita errores de migración
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 instance
@@ -30,5 +33,6 @@ abstract class AppDatabase : RoomDatabase() {
         }
     }
 }
+
 
 
