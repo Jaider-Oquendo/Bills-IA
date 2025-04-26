@@ -1,38 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/fragment_educativo"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <!-- Título del Fragmento -->
     <TextView
-        android:id="@+id/tituloEducativo"
-        android:layout_width="0dp"
+        android:id="@+id/txtArticulosDeInteres"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Artículos Educativos"
+        android:text="Artículos de interés"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#3F51B5"
-        android:gravity="center"
-        android:padding="16dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textColor="@color/primaryColor"
+        android:layout_gravity="center"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center" />
 
-    <!-- RecyclerView para mostrar los artículos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerEducativo"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="8dp"
-        android:clipToPadding="false"
-        app:layout_constraintTop_toBottomOf="@id/tituloEducativo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_weight="1"
+        android:layout_marginBottom="16dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

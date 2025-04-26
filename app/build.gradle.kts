@@ -94,5 +94,17 @@ dependencies {
 // OkHttp (cliente HTTP para enviar peticiones)
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
 
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+
+    // Retrofit para hacer solicitudes HTTP
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // Coroutines para manejar operaciones asíncronas
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
+
+    // Retrofit + Coroutines
+    implementation ("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+
 
 }
