@@ -30,12 +30,15 @@ class EducativoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Inicializar Firebase Database
         database = FirebaseDatabase.getInstance().reference.child("Articulos")
 
+        // Configurar RecyclerView
         articuloAdapter = ArticuloAdapter()
         binding.recyclerEducativo.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerEducativo.adapter = articuloAdapter
 
+        // Escuchar cambios en la base de datos
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val nuevosArticulos = mutableListOf<Articulo>()
@@ -47,9 +50,22 @@ class EducativoFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Aquí puedes manejar el error si lo deseas
+                // Manejar error si es necesario
             }
         })
+
+        // Botón para abrir la página de la DIAN
+        binding.btnIrADian.setOnClickListener {
+            val url = "https://www.dian.gov.co/"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
+        }
+
+        // Botón para abrir la pantalla de Noticias
+        binding.btnIrANoticias.setOnClickListener {
+            val intent = Intent(requireContext(), NoticiasActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {
