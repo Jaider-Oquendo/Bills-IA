@@ -1,5 +1,7 @@
 package com.example.billsia.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,12 +34,7 @@ class NoticiasFragment : Fragment(R.layout.fragment_noticias) {
         // Configurar el botón para regresar a EducativoFragment
         val btnRegresarEducativo = view.findViewById<Button>(R.id.btnRegresarEducativo)
         btnRegresarEducativo.setOnClickListener {
-            // Volver al fragmento educativo
-            val fragmentTransaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-            val educativoFragment = EducativoFragment() // Asegúrate de tener este fragmento importado
-            fragmentTransaction.replace(R.id.fragment_container, educativoFragment)
-            fragmentTransaction.addToBackStack("EducativoFragment")  // Si deseas que pueda ir atrás
-            fragmentTransaction.commit()
+            navegarAFragmentoEducativo()
         }
     }
 
@@ -52,14 +49,12 @@ class NoticiasFragment : Fragment(R.layout.fragment_noticias) {
                     }
                     mostrarNoticias()
                 } else {
-                    // Manejo de errores
-                    Toast.makeText(context, "Error al cargar las noticias", Toast.LENGTH_SHORT).show()
+                    manejarError("Error al cargar las noticias")
                 }
             }
 
             override fun onFailure(call: retrofit2.Call<ApiResponse>, t: Throwable) {
-                // Manejo de errores de conexión
-                Toast.makeText(context, "Error en la conexión", Toast.LENGTH_SHORT).show()
+                manejarError("Error en la conexión: ${t.message}")
             }
         })
     }
@@ -67,7 +62,6 @@ class NoticiasFragment : Fragment(R.layout.fragment_noticias) {
     private fun mostrarNoticias() {
         linearLayout.removeAllViews()  // Limpiar las vistas anteriores
 
-        // Agregar las noticias obtenidas dinámicamente
         for (noticia in noticias) {
             val noticiaView = LayoutInflater.from(context).inflate(R.layout.item_noticia, null)
 
@@ -77,7 +71,32 @@ class NoticiasFragment : Fragment(R.layout.fragment_noticias) {
             titleTextView.text = noticia.title
             descriptionTextView.text = noticia.description
 
+            noticiaView.setOnClickListener {
+                // Abrir el enlace de la noticia directamente
+                val url = noticia.url
+                if (url != null) {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
+                } else {
+                    manejarError("No hay URL disponible para esta noticia")
+                }
+            }
+
             linearLayout.addView(noticiaView)
         }
+    }
+
+    private fun manejarError(mensaje: String) {
+        context?.let {
+            Toast.makeText(it, mensaje, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun navegarAFragmentoEducativo() {
+        val fragmentTransaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+        val educativoFragment = EducativoFragment()
+        fragmentTransaction.replace(R.id.fragment_container, educativoFragment)
+        fragmentTransaction.addToBackStack("EducativoFragment")
+        fragmentTransaction.commit()
     }
 }
