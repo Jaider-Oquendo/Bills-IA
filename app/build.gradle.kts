@@ -108,10 +108,7 @@ dependencies {
     // Retrofit + Coroutines
     implementation ("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
 
-
-    implementation ("androidx.fragment:fragment-ktx:1.4.0")
-
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
 
 }

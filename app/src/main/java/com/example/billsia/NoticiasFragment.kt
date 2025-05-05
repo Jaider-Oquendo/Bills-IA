@@ -10,13 +10,16 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.bumptech.glide.Glide
 import com.example.billsia.EducativoFragment
 import com.example.billsia.R
 import com.example.billsia.api.ApiService
 import com.example.billsia.models.ApiResponse
 import com.example.billsia.models.Noticia
+
 
 class NoticiasFragment : Fragment(R.layout.fragment_noticias) {
 
@@ -67,19 +70,24 @@ class NoticiasFragment : Fragment(R.layout.fragment_noticias) {
 
             val titleTextView = noticiaView.findViewById<TextView>(R.id.textTitle)
             val descriptionTextView = noticiaView.findViewById<TextView>(R.id.textDescription)
+            val imageView = noticiaView.findViewById<ImageView>(R.id.imageNoticia)
 
             titleTextView.text = noticia.title
             descriptionTextView.text = noticia.description
 
+            // Cargar la imagen si está disponible
+            if (!noticia.urlToImage.isNullOrEmpty()) {
+                Glide.with(this)
+                    .load(noticia.urlToImage)
+                    .into(imageView)
+                imageView.visibility = View.VISIBLE
+            }
+
+            // Hacer que el LinearLayout sea clickeable para abrir el enlace de la noticia
             noticiaView.setOnClickListener {
-                // Abrir el enlace de la noticia directamente
-                val url = noticia.url
-                if (url != null) {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                    startActivity(intent)
-                } else {
-                    manejarError("No hay URL disponible para esta noticia")
-                }
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(noticia.url))
+                startActivity(intent)
+
             }
 
             linearLayout.addView(noticiaView)

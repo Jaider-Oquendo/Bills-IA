@@ -11,10 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.billsia.R
 import com.example.billsia.models.Noticia
 
-class NoticiasAdapter(
-    private val noticias: List<Noticia>,
-    private val context: Context
-) : RecyclerView.Adapter<NoticiasAdapter.NoticiaViewHolder>() {
+class NoticiasAdapter(private val context: Context, private val noticias: List<Noticia>) : RecyclerView.Adapter<NoticiasAdapter.NoticiaViewHolder>() {
 
     class NoticiaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.textTitle)
@@ -32,12 +29,12 @@ class NoticiasAdapter(
         holder.titleTextView.text = noticia.title
         holder.descriptionTextView.text = noticia.description
 
+        // Agregar un listener para abrir el enlace cuando se hace clic en la noticia
         holder.itemView.setOnClickListener {
-            val url = noticia.url
-            if (url.isNotEmpty()) {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                context.startActivity(intent)
-            }
+            // Abrir la URL de la noticia en un navegador
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(noticia.url))
+            context.startActivity(intent)
+
         }
     }
 
