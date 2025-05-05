@@ -4,12 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.google.firebase.auth.FirebaseAuth
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.google.firebase.auth.FirebaseAuth
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
+
     private lateinit var viewPager: ViewPager2
     private lateinit var bottomNavigation: BottomNavigationView
     private lateinit var auth: FirebaseAuth
@@ -50,7 +51,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupViewPager() {
         viewPager.adapter = object : FragmentStateAdapter(this) {
-            override fun getItemCount(): Int = 5
+            override fun getItemCount(): Int = 5  // Cambiar según la cantidad de fragmentos
             override fun createFragment(position: Int): Fragment {
                 return when (position) {
                     0 -> FragmentFinanciera()
@@ -61,10 +62,24 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         }
+
+        // Sincronizar el ViewPager con el BottomNavigationView
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                bottomNavigation.selectedItemId = when (position) {
+                    0 -> R.id.nav_financiera
+                    1 -> R.id.nav_educativo
+                    2 -> R.id.nav_tributaria
+                    3 -> R.id.nav_chatbot
+                    else -> R.id.nav_perfil
+                }
+            }
+        })
     }
 
     private fun disableSwipe() {
-        viewPager.isUserInputEnabled = false
+        viewPager.isUserInputEnabled = false  // Desactivar el deslizamiento manual
     }
 
     private fun setupBottomNavigation() {

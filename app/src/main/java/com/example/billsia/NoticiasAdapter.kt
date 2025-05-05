@@ -19,7 +19,8 @@ class NoticiasAdapter(private val context: Context, private val noticias: List<N
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoticiaViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_noticia, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_noticia, parent, false)
         return NoticiaViewHolder(view)
     }
 
@@ -33,6 +34,7 @@ class NoticiasAdapter(private val context: Context, private val noticias: List<N
             // Abrir la URL de la noticia en un navegador
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(noticia.url))
             context.startActivity(intent)
+
         }
     }
 
