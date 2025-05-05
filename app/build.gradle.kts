@@ -108,5 +108,6 @@ dependencies {
     // Retrofit + Coroutines
     implementation ("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
 
-
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
 }
