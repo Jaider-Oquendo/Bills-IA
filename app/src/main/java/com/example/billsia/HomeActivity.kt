@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.google.firebase.auth.FirebaseAuth
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.billsia.fragments.EducativoContainerFragment
+import com.google.firebase.auth.FirebaseAuth
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
@@ -77,6 +77,20 @@ class HomeActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Log.e("HomeActivity", "Error configurando el ViewPager", e)
         }
+
+        // Sincronizar el ViewPager con el BottomNavigationView
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                bottomNavigation.selectedItemId = when (position) {
+                    0 -> R.id.nav_financiera
+                    1 -> R.id.nav_educativo
+                    2 -> R.id.nav_tributaria
+                    3 -> R.id.nav_chatbot
+                    else -> R.id.nav_perfil
+                }
+            }
+        })
     }
 
     // Deshabilitar la opción de deslizamiento manual en el ViewPager
