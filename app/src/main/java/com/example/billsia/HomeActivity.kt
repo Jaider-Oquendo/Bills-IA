@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.example.billsia.fragments.EducativoContainerFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
@@ -66,7 +67,7 @@ class HomeActivity : AppCompatActivity() {
                 override fun createFragment(position: Int): Fragment {
                     return when (position) {
                         0 -> FragmentFinanciera()
-                        1 -> EducativoFragment()
+                        1 -> EducativoContainerFragment()
                         2 -> TributariaFragment()
                         3 -> ChatbotFragment()
                         else -> FragmentPerfil()

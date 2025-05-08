@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.billsia.databinding.FragmentEducativoBinding
+import com.example.billsia.fragments.NoticiasFragment
 import com.google.firebase.database.*
 
 class EducativoFragment : Fragment() {
@@ -61,10 +62,13 @@ class EducativoFragment : Fragment() {
             startActivity(intent)
         }
 
-        // Botón para abrir la pantalla de Noticias
+        // Botón para abrir la pantalla de Noticias (dentro del mismo contenedor)
         binding.btnIrANoticias.setOnClickListener {
-            val intent = Intent(requireContext(), NoticiasActivity::class.java)
-            startActivity(intent)
+            val noticiasFragment = NoticiasFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.innerFragmentContainer, noticiasFragment)
+                .addToBackStack(null)
+                .commit()
         }
     }
 

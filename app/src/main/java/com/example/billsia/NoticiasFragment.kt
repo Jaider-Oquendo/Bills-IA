@@ -6,20 +6,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
-import android.widget.ImageView
+import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.example.billsia.EducativoFragment
 import com.example.billsia.R
 import com.example.billsia.api.ApiService
 import com.example.billsia.models.ApiResponse
 import com.example.billsia.models.Noticia
-
 
 class NoticiasFragment : Fragment(R.layout.fragment_noticias) {
 
@@ -29,20 +23,16 @@ class NoticiasFragment : Fragment(R.layout.fragment_noticias) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val btnRegresarEducativo: Button = view.findViewById(R.id.btnRegresarEducativo)
         linearLayout = view.findViewById(R.id.linearNoticias)
 
-        // Llamamos a la API para obtener las noticias
         obtenerNoticiasDeLaAPI()
 
-        // Configurar el botón para regresar a EducativoFragment
-        val btnRegresarEducativo = view.findViewById<Button>(R.id.btnRegresarEducativo)
         btnRegresarEducativo.setOnClickListener {
-            // Volver al fragmento educativo
-            val fragmentTransaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-            val educativoFragment = EducativoFragment() // Asegúrate de tener este fragmento importado
-            fragmentTransaction.replace(R.id.fragment_container, educativoFragment)
-            fragmentTransaction.addToBackStack("EducativoFragment")  // Si deseas que pueda ir atrás
-            fragmentTransaction.commit()
+            parentFragment?.childFragmentManager?.beginTransaction()
+                ?.replace(R.id.innerFragmentContainer, EducativoFragment())
+                ?.addToBackStack(null)
+                ?.commit()
         }
     }
 
@@ -57,22 +47,18 @@ class NoticiasFragment : Fragment(R.layout.fragment_noticias) {
                     }
                     mostrarNoticias()
                 } else {
-                    // Manejo de errores
                     Toast.makeText(context, "Error al cargar las noticias", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: retrofit2.Call<ApiResponse>, t: Throwable) {
-                // Manejo de errores de conexión
                 Toast.makeText(context, "Error en la conexión", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
     private fun mostrarNoticias() {
-        linearLayout.removeAllViews()  // Limpiar las vistas anteriores
-
-        // Agregar las noticias obtenidas dinámicamente
+        linearLayout.removeAllViews()
         for (noticia in noticias) {
             val noticiaView = LayoutInflater.from(context).inflate(R.layout.item_noticia, null)
 
@@ -83,7 +69,6 @@ class NoticiasFragment : Fragment(R.layout.fragment_noticias) {
             titleTextView.text = noticia.title
             descriptionTextView.text = noticia.description
 
-            // Cargar la imagen si está disponible
             if (!noticia.urlToImage.isNullOrEmpty()) {
                 Glide.with(this)
                     .load(noticia.urlToImage)
@@ -91,7 +76,6 @@ class NoticiasFragment : Fragment(R.layout.fragment_noticias) {
                 imageView.visibility = View.VISIBLE
             }
 
-            // Hacer que el LinearLayout sea clickeable para abrir el enlace de la noticia
             noticiaView.setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(noticia.url))
                 startActivity(intent)
