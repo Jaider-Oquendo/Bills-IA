@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="#F4F6F8">
+
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Para quién vas a calcular la salud financiera?"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#212121"
+        android:layout_marginBottom="40dp"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/btnPersonaNatural"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="👤 Persona Natural"
+            android:textSize="16sp"
+            android:backgroundTint="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_rounded_green" />
+
+        <Button
+            android:id="@+id/btnEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="🏢 Empresa"
+            android:textSize="16sp"
+            android:backgroundTint="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btn_rounded_green" />
+    </LinearLayout>
+</LinearLayout>

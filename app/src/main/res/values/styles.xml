@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Tema base (puedes dejarlo como está si ya tienes uno en tu app) -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#4CAF50</item>
+        <item name="colorPrimaryDark">#388E3C</item>
+        <item name="colorAccent">#F83E03</item>
+    </style>
+
+    <!-- Estilo para los EditText -->
+    <style name="EditTextEstilo">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:background">@drawable/edittext_fondo</item>
+        <item name="android:textColorHint">#888888</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <!-- Estilo para el botón de guardar -->
+    <style name="BotonPrimario">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/btn_rounded_green</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Estilo para el botón de regresar -->
+    <style name="BotonSecundario">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/btn_rounded_red</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+</resources>

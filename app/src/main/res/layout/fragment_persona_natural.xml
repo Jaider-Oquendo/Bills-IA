@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F4F6F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="32dp">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvFormularioPersonaNatural"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salud Financiera - Persona Natural"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:layout_marginBottom="24dp"
+            android:textAlignment="center" />
+
+        <!-- Ingresos Mensuales -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingresos Mensuales"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:id="@+id/etIngresos"
+            style="@style/EditTextEstilo"
+            android:hint="Ej: 2000000"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background" />
+
+        <!-- Gastos Mensuales -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gastos Mensuales"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:id="@+id/etGastos"
+            style="@style/EditTextEstilo"
+            android:hint="Ej: 1500000"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background" />
+
+        <!-- Ahorros Totales -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ahorros Totales"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:id="@+id/etAhorros"
+            style="@style/EditTextEstilo"
+            android:hint="Ej: 5000000"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background" />
+
+        <!-- Deudas Totales -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deudas Totales"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:id="@+id/etDeudas"
+            style="@style/EditTextEstilo"
+            android:hint="Ej: 3000000"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background" />
+
+        <!-- Botón para calcular -->
+        <Button
+            android:id="@+id/btnCalcular"
+            style="@style/BotonPrimario"
+            android:text="Calcular Salud Financiera"
+            android:layout_marginTop="20dp"/>
+
+        <!-- Botón de Regreso -->
+        <Button
+            android:id="@+id/btnRegresar"
+            style="@style/BotonSecundario"
+            android:text="🔙 Regresar"
+            android:layout_marginTop="28dp" />
+
+        <!-- Resultado (tarjeta) -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:padding="20dp"
+            android:background="@drawable/tarjeta_resultado">
+
+            <TextView
+                android:id="@+id/tvResultado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:justificationMode="inter_word" />
+        </FrameLayout>
+
+    </LinearLayout>
+</ScrollView>

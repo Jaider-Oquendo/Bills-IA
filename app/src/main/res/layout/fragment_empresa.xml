@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F4F6F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="24dp">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvFormularioEmpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Formulario Empresa"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:layout_marginBottom="24dp"
+            android:textAlignment="center" />
+
+        <!-- Campos de texto mejorados -->
+        <EditText
+            android:id="@+id/etRazonSocial"
+            style="@style/EditTextEstilo"
+            android:hint="Nombre / Razón Social"
+            android:background="@drawable/input_background"/>
+
+
+        <EditText
+            android:id="@+id/etSector"
+            style="@style/EditTextEstilo"
+            android:hint="Sector o Actividad Económica"
+            android:background="@drawable/input_background"/>
+
+
+        <EditText
+            android:id="@+id/etUtilidadOperacional"
+            style="@style/EditTextEstilo"
+            android:hint="Utilidad Operacional"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background"/>
+
+
+        <EditText
+            android:id="@+id/etDepreciaciones"
+            style="@style/EditTextEstilo"
+            android:hint="Depreciaciones"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background"/>
+
+
+        <EditText
+            android:id="@+id/etVentas"
+            style="@style/EditTextEstilo"
+            android:hint="Ventas"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background"/>
+
+
+        <EditText
+            android:id="@+id/etInventarios"
+            style="@style/EditTextEstilo"
+            android:hint="Inventarios"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background"/>
+
+
+        <EditText
+            android:id="@+id/etCuentasPorCobrar"
+            style="@style/EditTextEstilo"
+            android:hint="Cuentas por Cobrar"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background"/>
+
+
+        <EditText
+            android:id="@+id/etProveedores"
+            style="@style/EditTextEstilo"
+            android:hint="Proveedores"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background"/>
+
+
+        <EditText
+            android:id="@+id/etImpuestos"
+            style="@style/EditTextEstilo"
+            android:hint="Impuestos"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background"/>
+
+
+        <EditText
+            android:id="@+id/etIntereses"
+            style="@style/EditTextEstilo"
+            android:hint="Intereses"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background"/>
+
+
+        <EditText
+            android:id="@+id/etDividendos"
+            style="@style/EditTextEstilo"
+            android:hint="Dividendos"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background"/>
+
+
+        <EditText
+            android:id="@+id/etDeudaFinanciera"
+            style="@style/EditTextEstilo"
+            android:hint="Deuda Financiera"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/input_background"/>
+
+
+        <!-- Botones -->
+        <Button
+            android:id="@+id/btnGuardarEmpresa"
+            style="@style/BotonPrimario"
+            android:text="💾 Guardar" />
+
+        <Button
+            android:id="@+id/btnRegresarSeleccion"
+            style="@style/BotonSecundario"
+            android:text="🔙 Regresar a la Selección"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>

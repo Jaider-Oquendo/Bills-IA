@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ingresa tu nombre"
-        android:background="@drawable/input_field"
+        android:background="@drawable/input_background"
         android:padding="12dp"
         android:layout_marginBottom="12dp"/>
 
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ingresa tu apellido"
-        android:background="@drawable/input_field"
+        android:background="@drawable/input_background"
         android:padding="12dp"
         android:layout_marginBottom="12dp"/>
 
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:hint="Ingresa tu número"
         android:inputType="phone"
-        android:background="@drawable/input_field"
+        android:background="@drawable/input_background"
         android:padding="12dp"
         android:layout_marginBottom="12dp"/>
 
@@ -73,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ingresa tu dirección"
-        android:background="@drawable/input_field"
+        android:background="@drawable/input_background"
         android:padding="12dp"
         android:layout_marginBottom="20dp"/>
 
@@ -82,11 +82,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Guardar cambios"
-        android:backgroundTint="@color/dark_blue"
+        android:backgroundTint="#4CAF50"
         android:textColor="@color/white"
         android:padding="14dp"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_rounded_green" />
+
 </LinearLayout>
 
