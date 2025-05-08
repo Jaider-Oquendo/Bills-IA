@@ -47,7 +47,8 @@ class AuthActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         googleSignInClient = Identity.getSignInClient(this)
-// Enlace con los elementos de la UI
+
+        // Enlace con los elementos de la UI
         emailField = findViewById(R.id.etEmail)
         passwordField = findViewById(R.id.etPassword)
         loginButton = findViewById(R.id.btnLogin)
@@ -74,7 +75,6 @@ class AuthActivity : AppCompatActivity() {
         registerButton.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
-
     }
 
     private fun loginWithEmail(email: String, password: String) {
@@ -128,6 +128,4 @@ class AuthActivity : AppCompatActivity() {
         startActivity(Intent(this, HomeActivity::class.java))
         finish()
     }
-
-
 }

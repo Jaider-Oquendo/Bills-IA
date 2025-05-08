@@ -19,7 +19,7 @@
             android:theme="@style/Theme.BillsIA" />
         <activity
             android:name=".HomeActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="Bienvenido"
             android:theme="@style/Theme.BillsIA" />
 

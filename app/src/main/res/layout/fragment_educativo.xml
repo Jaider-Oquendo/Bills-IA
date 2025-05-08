@@ -17,21 +17,25 @@
             android:id="@+id/btnIrADian"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/primaryColor"
+            android:backgroundTint="#4CAF50"
             android:text="Ir a la DIAN"
             android:textColor="@android:color/white"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/btn_rounded_green" />
+
 
         <Button
             android:id="@+id/btnIrANoticias"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/primaryColor"
+            android:backgroundTint="#4CAF50"
             android:text="Ver Noticias"
             android:textColor="@android:color/white"
             android:layout_weight="1"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp"
+            android:background="@drawable/btn_rounded_green" />
+
 
     </LinearLayout>
 
@@ -42,7 +46,7 @@
         android:text="Artículos de interés"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/primaryColor"
+        android:textColor="#0C380E"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         android:gravity="center" />
