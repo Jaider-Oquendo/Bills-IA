@@ -30,108 +30,151 @@
             android:id="@+id/etRazonSocial"
             style="@style/EditTextEstilo"
             android:hint="Nombre / Razón Social"
-            android:background="@drawable/input_background"/>
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
+        <EditText
+            android:id="@+id/etNit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="NIT"
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etSector"
-            style="@style/EditTextEstilo"
-            android:hint="Sector o Actividad Económica"
-            android:background="@drawable/input_background"/>
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Actividad económica (nombre)"
+            android:inputType="text"
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etUtilidadOperacional"
             style="@style/EditTextEstilo"
             android:hint="Utilidad Operacional"
             android:inputType="numberDecimal"
-            android:background="@drawable/input_background"/>
-
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etDepreciaciones"
             style="@style/EditTextEstilo"
             android:hint="Depreciaciones"
             android:inputType="numberDecimal"
-            android:background="@drawable/input_background"/>
-
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etVentas"
             style="@style/EditTextEstilo"
             android:hint="Ventas"
             android:inputType="numberDecimal"
-            android:background="@drawable/input_background"/>
-
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etInventarios"
             style="@style/EditTextEstilo"
             android:hint="Inventarios"
             android:inputType="numberDecimal"
-            android:background="@drawable/input_background"/>
-
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etCuentasPorCobrar"
             style="@style/EditTextEstilo"
             android:hint="Cuentas por Cobrar"
             android:inputType="numberDecimal"
-            android:background="@drawable/input_background"/>
-
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etProveedores"
             style="@style/EditTextEstilo"
             android:hint="Proveedores"
             android:inputType="numberDecimal"
-            android:background="@drawable/input_background"/>
-
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etImpuestos"
             style="@style/EditTextEstilo"
             android:hint="Impuestos"
             android:inputType="numberDecimal"
-            android:background="@drawable/input_background"/>
-
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etIntereses"
             style="@style/EditTextEstilo"
             android:hint="Intereses"
             android:inputType="numberDecimal"
-            android:background="@drawable/input_background"/>
-
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etDividendos"
             style="@style/EditTextEstilo"
             android:hint="Dividendos"
             android:inputType="numberDecimal"
-            android:background="@drawable/input_background"/>
-
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etDeudaFinanciera"
             style="@style/EditTextEstilo"
             android:hint="Deuda Financiera"
             android:inputType="numberDecimal"
-            android:layout_marginBottom="32dp"
-            android:background="@drawable/input_background"/>
-
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
 
         <!-- Botones -->
         <Button
             android:id="@+id/btnGuardarEmpresa"
             style="@style/BotonPrimario"
-            android:text="💾 Guardar" />
+            android:text="💾 Guardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"/>
 
         <Button
             android:id="@+id/btnRegresarSeleccion"
             style="@style/BotonSecundario"
             android:text="🔙 Regresar a la Selección"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"/>
 
     </LinearLayout>
 </ScrollView>

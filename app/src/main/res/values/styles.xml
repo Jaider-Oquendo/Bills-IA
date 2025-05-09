@@ -12,12 +12,12 @@
     <style name="EditTextEstilo">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">14dp</item>
         <item name="android:layout_marginBottom">16dp</item>
-        <item name="android:background">@drawable/edittext_fondo</item>
-        <item name="android:textColorHint">#888888</item>
+        <item name="android:padding">12dp</item>
         <item name="android:textColor">#000000</item>
+        <item name="android:textSize">16sp</item>
     </style>
+
 
     <!-- Estilo para el botón de guardar -->
     <style name="BotonPrimario">
