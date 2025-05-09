@@ -79,24 +79,9 @@ class NoticiasFragment : Fragment(R.layout.fragment_noticias) {
             noticiaView.setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(noticia.url))
                 startActivity(intent)
-
             }
 
             linearLayout.addView(noticiaView)
         }
-    }
-
-    private fun manejarError(mensaje: String) {
-        context?.let {
-            Toast.makeText(it, mensaje, Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun navegarAFragmentoEducativo() {
-        val fragmentTransaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-        val educativoFragment = EducativoFragment()
-        fragmentTransaction.replace(R.id.fragment_container, educativoFragment)
-        fragmentTransaction.addToBackStack("EducativoFragment")
-        fragmentTransaction.commit()
     }
 }
