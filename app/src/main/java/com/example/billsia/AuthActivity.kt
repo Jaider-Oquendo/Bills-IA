@@ -12,6 +12,9 @@ import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.*
 import androidx.activity.result.IntentSenderRequest
+import androidx.lifecycle.ViewModelProvider
+import com.example.billsia.data.viewmodel.UserViewModel
+
 
 class AuthActivity : AppCompatActivity() {
 
@@ -116,16 +119,33 @@ class AuthActivity : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Inicio de sesión con Google exitoso", Toast.LENGTH_SHORT).show()
-                    goToHome()
+                    val email = auth.currentUser?.email
+                    if (email != null) {
+                        val userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+
+                        userViewModel.fetchUserByEmail(email)
+                        userViewModel.userByEmail.observe(this) { user ->
+                            if (user == null) {
+                                // El usuario no existe, redirige a completar el perfil
+                                startActivity(Intent(this@AuthActivity, CompleteProfileActivity::class.java))
+                                finish()
+                            } else {
+                                // El usuario existe, redirige a la pantalla de inicio
+                                goToHome()
+                            }
+                        }
+                    } else {
+                        // Si no hay email, redirigir al home
+                        goToHome()
+                    }
                 } else {
-                    Toast.makeText(this, "Error en autenticación con Google", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Error autenticando con Google", Toast.LENGTH_LONG).show()
                 }
             }
     }
 
     private fun goToHome() {
-        startActivity(Intent(this, HomeActivity::class.java))
+        startActivity(Intent(this, SplashActivity::class.java))
         finish()
     }
 }
