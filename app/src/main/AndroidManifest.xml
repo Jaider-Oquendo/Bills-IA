@@ -21,11 +21,24 @@
             android:label="Registrate"
             android:theme="@style/Theme.BillsIA" />
         <activity
+            android:name=".CompleteProfileActivity"
+            android:exported="false"
+            android:label="Completar Registro"
+            android:theme="@style/Theme.BillsIA" />
+        <activity
             android:name=".HomeActivity"
             android:exported="true"
             android:label="Bienvenido"
             android:theme="@style/Theme.BillsIA" />
-
+        <activity
+            android:name=".NoticiasActivity"
+            android:exported="true"
+            android:label="Noticias"
+            android:theme="@style/Theme.BillsIA" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.BillsIA" />
         <activity
             android:name=".AuthActivity"
             android:exported="true"
@@ -37,12 +50,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".NoticiasActivity"
-            android:exported="true"
-            android:label="Noticias"
-            android:theme="@style/Theme.BillsIA" />
 
     </application>
 
