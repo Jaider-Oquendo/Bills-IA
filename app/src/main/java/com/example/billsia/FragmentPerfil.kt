@@ -8,9 +8,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.firebase.auth.FirebaseAuth
 import androidx.lifecycle.lifecycleScope
-import com.example.billsia.data.db.AppDatabase
+import com.example.billsia.data.AppDatabase
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

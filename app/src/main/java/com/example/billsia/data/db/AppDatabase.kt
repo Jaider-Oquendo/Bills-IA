@@ -1,18 +1,26 @@
-package com.example.billsia.data.db
+package com.example.billsia.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.billsia.data.dao.MensajeDao
-import com.example.billsia.data.entities.UserEntity
 import com.example.billsia.data.dao.UserDao
+import com.example.billsia.data.dao.UsuarioDao
 import com.example.billsia.data.entities.Mensaje
+import com.example.billsia.data.entities.UserEntity
+import com.example.billsia.data.entities.Usuario
 
-@Database(entities = [UserEntity::class, Mensaje::class], version = 2, exportSchema = false)
+@Database(
+    entities = [UserEntity::class, Mensaje::class, Usuario::class],
+    version = 3,
+    exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun userDao(): UserDao
     abstract fun mensajeDao(): MensajeDao
+    abstract fun usuarioDao(): UsuarioDao
 
     companion object {
         @Volatile
@@ -33,6 +41,3 @@ abstract class AppDatabase : RoomDatabase() {
         }
     }
 }
-
-
-
