@@ -16,7 +16,8 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
+        // Habilitar el soporte de vectores en versiones de Android anteriores a Lollipop
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
