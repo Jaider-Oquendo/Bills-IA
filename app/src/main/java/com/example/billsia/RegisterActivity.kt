@@ -2,32 +2,34 @@ package com.example.billsia
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.text.InputType
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.example.billsia.data.viewmodel.UserViewModel
-import com.example.billsia.data.entities.UserEntity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.launch
+import com.example.billsia.data.entities.UserEntity
+import com.example.billsia.data.viewmodel.UserViewModel
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var userViewModel: UserViewModel
+
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
+    private lateinit var etConfirmPassword: EditText
     private lateinit var etCedula: EditText
     private lateinit var etNombre: EditText
     private lateinit var etApellido: EditText
     private lateinit var etDireccion: EditText
     private lateinit var etTelefono: EditText
+    private lateinit var ivTogglePassword: ImageView
+    private lateinit var ivToggleConfirm: ImageView
     private lateinit var btnRegister: Button
     private lateinit var tvGoToLogin: TextView
-    private lateinit var userViewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,20 +38,47 @@ class RegisterActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
+        // Referencias UI
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
+        etConfirmPassword = findViewById(R.id.etConfirmPassword)
         etCedula = findViewById(R.id.etCedula)
         etNombre = findViewById(R.id.etNombre)
         etApellido = findViewById(R.id.etApellido)
         etDireccion = findViewById(R.id.etDireccion)
         etTelefono = findViewById(R.id.etTelefono)
+        ivTogglePassword = findViewById(R.id.ivTogglePassword)
+        ivToggleConfirm = findViewById(R.id.ivToggleConfirmPassword)
         btnRegister = findViewById(R.id.btnRegister)
         tvGoToLogin = findViewById(R.id.tvGoToLogin)
 
-        btnRegister.setOnClickListener {
-            registerUser()
+        // Toggle visibilidad contraseña
+        var pwdVisible = false
+        ivTogglePassword.setOnClickListener {
+            pwdVisible = !pwdVisible
+            etPassword.inputType =
+                if (pwdVisible) InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                else InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            etPassword.setSelection(etPassword.text.length)
+            ivTogglePassword.setImageResource(
+                if (pwdVisible) R.drawable.ic_visibility else R.drawable.ic_visibility_off
+            )
         }
 
+        // Toggle visibilidad confirmación
+        var confirmVisible = false
+        ivToggleConfirm.setOnClickListener {
+            confirmVisible = !confirmVisible
+            etConfirmPassword.inputType =
+                if (confirmVisible) InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                else InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            etConfirmPassword.setSelection(etConfirmPassword.text.length)
+            ivToggleConfirm.setImageResource(
+                if (confirmVisible) R.drawable.ic_visibility else R.drawable.ic_visibility_off
+            )
+        }
+
+        btnRegister.setOnClickListener { registerUser() }
         tvGoToLogin.setOnClickListener {
             startActivity(Intent(this, AuthActivity::class.java))
             finish()
@@ -59,51 +88,60 @@ class RegisterActivity : AppCompatActivity() {
     private fun registerUser() {
         val email = etEmail.text.toString().trim()
         val password = etPassword.text.toString().trim()
+        val confirm = etConfirmPassword.text.toString().trim()
         val cedula = etCedula.text.toString().trim()
         val nombre = etNombre.text.toString().trim()
         val apellido = etApellido.text.toString().trim()
         val direccion = etDireccion.text.toString().trim()
         val telefono = etTelefono.text.toString().trim()
 
-        if (!isValidEmail(email) || password.length < 6 || cedula.isEmpty() || nombre.isEmpty()) {
-            Toast.makeText(this, "Por favor, revisa los campos ingresados", Toast.LENGTH_SHORT).show()
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            toast("Correo inválido"); return
+        }
+        if (!Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#\$%^&+=!]).{8,}\$").matches(password)) {
+            toast("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial")
             return
         }
+        if (password != confirm) {
+            toast("Las contraseñas no coinciden"); return
+        }
+        if (cedula.isEmpty() || nombre.isEmpty()) {
+            toast("Cédula y nombre obligatorios"); return
+        }
 
-        userViewModel.getUserByCedula(cedula).observe(this) { existingUser ->
-            if (existingUser != null) {
-                Toast.makeText(this, "La cédula ya está registrada", Toast.LENGTH_SHORT).show()
+        // 1) Verificar email local
+        userViewModel.fetchUserByEmail(email)
+        userViewModel.userByEmail.observe(this) { userWithEmail ->
+            if (userWithEmail != null) {
+                toast("Ya existe un usuario registrado con ese correo")
                 return@observe
             }
-
-            auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        val newUserEntity = UserEntity(
-                            cedula = cedula,
-                            nombre = nombre,
-                            apellido = apellido,
-                            email = email,
-                            password = password,
-                            direccion = direccion,
-                            telefono = telefono
-                        )
-
-                        lifecycleScope.launch(Dispatchers.IO) {
-                            userViewModel.insertUser(newUserEntity)
-                        }
-
-                        Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, HomeActivity::class.java))
-                        finish()
-                    } else {
-                        Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                    }
+        // 2) Verificar cédula local
+            userViewModel.getUserByCedula(cedula).observe(this) { existing ->
+                if (existing != null) {
+                    toast("Cédula ya registrada"); return@observe
                 }
+
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            val user = UserEntity(cedula, nombre, apellido, email, password, direccion, telefono)
+                            lifecycleScope.launch(Dispatchers.IO) {
+                                userViewModel.insertUser(user)
+                            }
+                            toast("Registro exitoso")
+                            startActivity(Intent(this, HomeActivity::class.java))
+                            finish()
+                        } else {
+                            toast("Error: ${task.exception?.message}")
+                        }
+                    }
+            }
         }
+
     }
 
-    private fun isValidEmail(email: String): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    private fun toast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 }

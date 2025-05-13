@@ -13,17 +13,16 @@
         android:padding="24dp"
         android:background="@color/white"
         android:elevation="4dp"
-        android:layout_margin="16dp"
-        android:radius="12dp">
+        android:layout_margin="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Registro"
-            android:textSize="26sp"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="@color/dark_blue"
-            android:layout_marginBottom="20dp"/>
+            android:textColor="#FF000000"
+            android:layout_marginBottom="24dp" />
 
         <EditText
             android:id="@+id/etCedula"
@@ -32,7 +31,9 @@
             android:hint="Cédula"
             android:inputType="number"
             android:padding="12dp"
-            android:background="@drawable/input_field"/>
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"
+            android:background="@drawable/input_field" />
 
         <EditText
             android:id="@+id/etNombre"
@@ -41,7 +42,9 @@
             android:hint="Nombre"
             android:inputType="textPersonName"
             android:padding="12dp"
-            android:background="@drawable/input_field"/>
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"
+            android:background="@drawable/input_field" />
 
         <EditText
             android:id="@+id/etApellido"
@@ -50,7 +53,9 @@
             android:hint="Apellido"
             android:inputType="textPersonName"
             android:padding="12dp"
-            android:background="@drawable/input_field"/>
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"
+            android:background="@drawable/input_field" />
 
         <EditText
             android:id="@+id/etEmail"
@@ -59,16 +64,63 @@
             android:hint="Correo Electrónico"
             android:inputType="textEmailAddress"
             android:padding="12dp"
-            android:background="@drawable/input_field"/>
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"
+            android:background="@drawable/input_field" />
 
-        <EditText
-            android:id="@+id/etPassword"
+        <!-- Password field with toggle -->
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:background="@drawable/input_field"/>
+            android:layout_marginTop="12dp">
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:background="@drawable/input_field"
+                android:layout_toStartOf="@+id/ivTogglePassword" />
+
+            <ImageView
+                android:id="@+id/ivTogglePassword"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_visibility_off"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="8dp" />
+        </RelativeLayout>
+
+        <!-- Confirm password with toggle -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <EditText
+                android:id="@+id/etConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirmar Contraseña"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:background="@drawable/input_field"
+                android:layout_toStartOf="@+id/ivToggleConfirmPassword" />
+
+            <ImageView
+                android:id="@+id/ivToggleConfirmPassword"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_visibility_off"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="8dp" />
+        </RelativeLayout>
 
         <EditText
             android:id="@+id/etDireccion"
@@ -77,7 +129,9 @@
             android:hint="Dirección"
             android:inputType="textPostalAddress"
             android:padding="12dp"
-            android:background="@drawable/input_field"/>
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"
+            android:background="@drawable/input_field" />
 
         <EditText
             android:id="@+id/etTelefono"
@@ -86,32 +140,32 @@
             android:hint="Teléfono"
             android:inputType="phone"
             android:padding="12dp"
-            android:background="@drawable/input_field"/>
+            android:layout_marginTop="12dp"
+            android:textColor="#000000"
+            android:background="@drawable/input_field" />
 
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Registrarse"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
             android:backgroundTint="#4CAF50"
             android:padding="14dp"
-            android:layout_marginTop="20dp"
-            android:radius="8dp"/>
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp" />
 
         <TextView
             android:id="@+id/tvGoToLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="¿Ya tienes cuenta? Inicia sesión"
-            android:textColor="@color/dark_blue"
+            android:textColor="#388E3C"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
             android:clickable="true"
-            android:focusable="true"
-            android:padding="12dp"
-            android:minHeight="48dp"
-            android:minWidth="48dp"/>
-
+            android:focusable="true" />
     </LinearLayout>
 </ScrollView>
