@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.billsia.adapters.ChatAdapter
-import com.example.billsia.data.db.AppDatabase
+import com.example.billsia.data.AppDatabase
 import com.example.billsia.data.entities.Mensaje
 import com.example.billsia.databinding.FragmentChatbotBinding
 import kotlinx.coroutines.*

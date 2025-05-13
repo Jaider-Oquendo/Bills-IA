@@ -5,7 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.billsia.data.AppDatabase
+import com.example.billsia.data.dao.UsuarioDao
+import com.example.billsia.data.entities.Usuario
 import com.example.billsia.databinding.FragmentTributariaBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.*
 
@@ -13,34 +19,38 @@ class TributariaFragment : Fragment() {
 
     private var _binding: FragmentTributariaBinding? = null
     private val binding get() = _binding!!
+    private lateinit var usuarioDao: UsuarioDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTributariaBinding.inflate(inflater, container, false)
+        val database = AppDatabase.getDatabase(requireContext())
+        usuarioDao = database.usuarioDao()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.btnEnviar.setOnClickListener {
+            val cedula = binding.inputCedula.text?.toString()?.trim()
             val ingresoStr = binding.inputIngresoAnual.text?.toString()?.trim()
             val patrimonioStr = binding.inputPatrimonio.text?.toString()?.trim()
             val consumoStr = binding.inputConsumo.text?.toString()?.trim()
             val comprasStr = binding.inputCompras.text?.toString()?.trim()
 
-            // Validación de campos vacíos
-            if (ingresoStr.isNullOrEmpty() || patrimonioStr.isNullOrEmpty() ||
-                consumoStr.isNullOrEmpty() || comprasStr.isNullOrEmpty()) {
+            if (cedula.isNullOrEmpty() || ingresoStr.isNullOrEmpty() || patrimonioStr.isNullOrEmpty() ||
+                consumoStr.isNullOrEmpty() || comprasStr.isNullOrEmpty()
+            ) {
                 binding.textResultado.text = "⚠️ Por favor, complete todos los campos."
                 return@setOnClickListener
             }
 
             try {
-                val ingreso = ingresoStr.toDouble() //* 1_000_000  ingreso en pesos
-                val patrimonio = patrimonioStr.toDouble() //* 1_000_000
-                val consumo = consumoStr.toDouble()// * 1_000_000
-                val compras = comprasStr.toDouble() //* 1_000_000
+                val ingreso = ingresoStr.toDouble()
+                val patrimonio = patrimonioStr.toDouble()
+                val consumo = consumoStr.toDouble()
+                val compras = comprasStr.toDouble()
 
                 val uvt = 49799  // Valor UVT año 2025
                 val umbralIngreso = 1400 * uvt
@@ -73,11 +83,26 @@ class TributariaFragment : Fragment() {
 
                 binding.textResultado.text = resultado
 
+                // Guardar en la base de datos
+                val usuario = Usuario(
+                    cedula = cedula,
+                    ingreso = ingreso,
+                    patrimonio = patrimonio,
+                    consumo = consumo,
+                    compras = compras
+                )
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    usuarioDao.insertarUsuario(usuario)
+                }
+
             } catch (e: NumberFormatException) {
                 binding.textResultado.text = "⚠️ Por favor, ingrese valores numéricos válidos en todos los campos."
             }
         }
+
         binding.btnLimpiar.setOnClickListener {
+            binding.inputCedula.text?.clear()
             binding.inputIngresoAnual.text?.clear()
             binding.inputPatrimonio.text?.clear()
             binding.inputConsumo.text?.clear()
@@ -85,6 +110,30 @@ class TributariaFragment : Fragment() {
             binding.textResultado.text = ""
         }
 
+        binding.btnCargar.setOnClickListener {
+            val cedula = binding.inputCedula.text?.toString()?.trim()
+            if (cedula.isNullOrEmpty()) {
+                binding.textResultado.text = "⚠️ Por favor, ingrese la cédula para cargar los datos."
+                return@setOnClickListener
+            }
+
+            CoroutineScope(Dispatchers.IO).launch {
+                val usuario = usuarioDao.obtenerUsuarioPorCedula(cedula)
+                if (usuario != null) {
+                    requireActivity().runOnUiThread {
+                        binding.inputIngresoAnual.setText(usuario.ingreso.toString())
+                        binding.inputPatrimonio.setText(usuario.patrimonio.toString())
+                        binding.inputConsumo.setText(usuario.consumo.toString())
+                        binding.inputCompras.setText(usuario.compras.toString())
+                        binding.textResultado.text = "✅ Datos cargados correctamente."
+                    }
+                } else {
+                    requireActivity().runOnUiThread {
+                        binding.textResultado.text = "⚠️ Cédula sin datos registrados."
+                    }
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {
