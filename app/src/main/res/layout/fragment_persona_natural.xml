@@ -25,6 +25,28 @@
             android:layout_marginBottom="24dp"
             android:textAlignment="center" />
 
+        <!-- Cédula -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cédula"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:id="@+id/etCedula"
+            style="@style/EditTextEstilo"
+            android:hint="Ej: 1234567890"
+            android:inputType="number"
+            android:background="@drawable/input_background" />
+
+        <!-- Botón Cargar -->
+        <Button
+            android:id="@+id/btnCargar"
+            style="@style/BotonSecundario"
+            android:text="Cargar Datos"
+            android:layout_marginTop="12dp" />
+
         <!-- Ingresos Mensuales -->
         <TextView
             android:layout_width="match_parent"
@@ -96,7 +118,7 @@
         <Button
             android:id="@+id/btnRegresar"
             style="@style/BotonSecundario"
-            android:text="🔙 Regresar"
+            android:text="Regresar"
             android:layout_marginTop="28dp" />
 
         <!-- Resultado (tarjeta) -->
