@@ -15,6 +15,14 @@ import kotlinx.coroutines.launch
 
 class RegisterActivity : AppCompatActivity() {
 
+    private fun showAlert(title: String, message: String) {
+        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        builder.setTitle(title)
+        builder.setMessage(message)
+        builder.setPositiveButton("OK", null)
+        builder.show()
+    }
+
     private lateinit var auth: FirebaseAuth
     private lateinit var userViewModel: UserViewModel
 
@@ -99,9 +107,13 @@ class RegisterActivity : AppCompatActivity() {
             toast("Correo inválido"); return
         }
         if (!Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#\$%^&+=!]).{8,}\$").matches(password)) {
-            toast("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial")
+            showAlert(
+                "Contraseña inválida",
+                "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial."
+            )
             return
         }
+
         if (password != confirm) {
             toast("Las contraseñas no coinciden"); return
         }

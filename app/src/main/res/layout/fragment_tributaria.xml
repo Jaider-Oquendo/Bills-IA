@@ -12,7 +12,10 @@
         android:id="@+id/fragment_tributaria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="24dp">
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="24dp"
+        android:paddingTop="48dp">
 
         <!-- Guía para centrar verticalmente -->
         <androidx.constraintlayout.widget.Guideline
@@ -32,7 +35,7 @@
             android:textStyle="bold"
             android:textColor="#0C380E"
             android:gravity="center"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="40dp"
             app:layout_constraintTop_toTopOf="@id/guidelineCenter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
