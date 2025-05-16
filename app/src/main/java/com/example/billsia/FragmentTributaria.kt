@@ -32,12 +32,14 @@ class TributariaFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val formatoPesos = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
+
         binding.btnEnviar.setOnClickListener {
             val cedula = binding.inputCedula.text?.toString()?.trim()
-            val ingresoStr = binding.inputIngresoAnual.text?.toString()?.trim()
-            val patrimonioStr = binding.inputPatrimonio.text?.toString()?.trim()
-            val consumoStr = binding.inputConsumo.text?.toString()?.trim()
-            val comprasStr = binding.inputCompras.text?.toString()?.trim()
+            val ingresoStr = binding.inputIngresoAnual.text?.toString()?.trim()?.replace("[^\\d.]".toRegex(), "")
+            val patrimonioStr = binding.inputPatrimonio.text?.toString()?.trim()?.replace("[^\\d.]".toRegex(), "")
+            val consumoStr = binding.inputConsumo.text?.toString()?.trim()?.replace("[^\\d.]".toRegex(), "")
+            val comprasStr = binding.inputCompras.text?.toString()?.trim()?.replace("[^\\d.]".toRegex(), "")
 
             if (cedula.isNullOrEmpty() || ingresoStr.isNullOrEmpty() || patrimonioStr.isNullOrEmpty() ||
                 consumoStr.isNullOrEmpty() || comprasStr.isNullOrEmpty()
@@ -57,8 +59,6 @@ class TributariaFragment : Fragment() {
                 val umbralPatrimonio = 4500 * uvt
                 val umbralConsumo = 1400 * uvt
                 val umbralCompras = 1400 * uvt
-
-                val formatoPesos = NumberFormat.getCurrencyInstance(Locale("es", "CO"))
 
                 val razones = mutableListOf<String>()
 
@@ -121,10 +121,11 @@ class TributariaFragment : Fragment() {
                 val usuario = usuarioDao.obtenerUsuarioPorCedula(cedula)
                 if (usuario != null) {
                     requireActivity().runOnUiThread {
-                        binding.inputIngresoAnual.setText(usuario.ingreso.toString())
-                        binding.inputPatrimonio.setText(usuario.patrimonio.toString())
-                        binding.inputConsumo.setText(usuario.consumo.toString())
-                        binding.inputCompras.setText(usuario.compras.toString())
+                        // Mostrar los datos con formato de moneda
+                        binding.inputIngresoAnual.setText(formatoPesos.format(usuario.ingreso))
+                        binding.inputPatrimonio.setText(formatoPesos.format(usuario.patrimonio))
+                        binding.inputConsumo.setText(formatoPesos.format(usuario.consumo))
+                        binding.inputCompras.setText(formatoPesos.format(usuario.compras))
                         binding.textResultado.text = "✅ Datos cargados correctamente."
                     }
                 } else {

@@ -68,8 +68,8 @@
             android:textColor="#000000"
             android:background="@drawable/input_field" />
 
-        <!-- Password field with toggle -->
-        <RelativeLayout
+        <!-- Password field with icon inside -->
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp">
@@ -80,23 +80,22 @@
                 android:layout_height="wrap_content"
                 android:hint="Contraseña"
                 android:inputType="textPassword"
+                android:paddingEnd="48dp"
                 android:padding="12dp"
                 android:textColor="#000000"
-                android:background="@drawable/input_field"
-                android:layout_toStartOf="@+id/ivTogglePassword" />
+                android:background="@drawable/input_field" />
 
             <ImageView
                 android:id="@+id/ivTogglePassword"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_visibility_off"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:padding="8dp" />
-        </RelativeLayout>
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="12dp" />
+        </FrameLayout>
 
-        <!-- Confirm password with toggle -->
-        <RelativeLayout
+        <!-- Confirm password field with icon inside -->
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp">
@@ -107,20 +106,19 @@
                 android:layout_height="wrap_content"
                 android:hint="Confirmar Contraseña"
                 android:inputType="textPassword"
+                android:paddingEnd="48dp"
                 android:padding="12dp"
                 android:textColor="#000000"
-                android:background="@drawable/input_field"
-                android:layout_toStartOf="@+id/ivToggleConfirmPassword" />
+                android:background="@drawable/input_field" />
 
             <ImageView
                 android:id="@+id/ivToggleConfirmPassword"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_visibility_off"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:padding="8dp" />
-        </RelativeLayout>
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="12dp" />
+        </FrameLayout>
 
         <EditText
             android:id="@+id/etDireccion"

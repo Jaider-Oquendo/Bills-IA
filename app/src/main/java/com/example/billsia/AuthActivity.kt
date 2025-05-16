@@ -15,7 +15,6 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.lifecycle.ViewModelProvider
 import com.example.billsia.data.viewmodel.UserViewModel
 
-
 class AuthActivity : AppCompatActivity() {
 
     // Elementos de la UI
@@ -26,6 +25,9 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var loginButton: Button
     private lateinit var googleSignInButton: Button
     private lateinit var registerButton: TextView
+    private lateinit var togglePasswordImageView: ImageView
+
+    private var isPasswordVisible = false
 
     private val googleSignInLauncher = registerForActivityResult(
         ActivityResultContracts.StartIntentSenderForResult()
@@ -57,6 +59,23 @@ class AuthActivity : AppCompatActivity() {
         loginButton = findViewById(R.id.btnLogin)
         googleSignInButton = findViewById(R.id.btnGoogleSignIn)
         registerButton = findViewById(R.id.txtRegister)
+        togglePasswordImageView = findViewById(R.id.ivTogglePassword)
+
+        // Listener para mostrar/ocultar contraseña
+        togglePasswordImageView.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+            if (isPasswordVisible) {
+                passwordField.inputType = android.text.InputType.TYPE_CLASS_TEXT or
+                        android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                togglePasswordImageView.setImageResource(R.drawable.ic_eye_off)
+            } else {
+                passwordField.inputType = android.text.InputType.TYPE_CLASS_TEXT or
+                        android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+                togglePasswordImageView.setImageResource(R.drawable.ic_eye)
+            }
+            // Mantener cursor al final del texto
+            passwordField.setSelection(passwordField.text.length)
+        }
 
         // Iniciar sesión con email y contraseña
         loginButton.setOnClickListener {

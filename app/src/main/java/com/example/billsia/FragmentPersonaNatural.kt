@@ -13,6 +13,8 @@ import com.example.billsia.databinding.FragmentPersonaNaturalBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.NumberFormat
+import java.util.Locale
 
 class FragmentPersonaNatural : Fragment() {
 
@@ -78,10 +80,15 @@ class FragmentPersonaNatural : Fragment() {
             lifecycleScope.launch {
                 val persona = withContext(Dispatchers.IO) { dao.buscarPorCedula(cedula) }
                 if (persona != null) {
-                    binding.etIngresos.setText(persona.ingresos.toString())
-                    binding.etGastos.setText(persona.gastos.toString())
-                    binding.etAhorros.setText(persona.ahorros.toString())
-                    binding.etDeudas.setText(persona.deudas.toString())
+                    // Formatear números con separadores de miles y 2 decimales
+                    val formatoNumero = NumberFormat.getNumberInstance(Locale("es", "CO")).apply {
+                        minimumFractionDigits = 2
+                        maximumFractionDigits = 2
+                    }
+                    binding.etIngresos.setText(formatoNumero.format(persona.ingresos))
+                    binding.etGastos.setText(formatoNumero.format(persona.gastos))
+                    binding.etAhorros.setText(formatoNumero.format(persona.ahorros))
+                    binding.etDeudas.setText(formatoNumero.format(persona.deudas))
                     Toast.makeText(requireContext(), "Datos cargados correctamente", Toast.LENGTH_SHORT).show()
                 } else {
                     binding.tvResultado.text = "Cédula sin datos registrados."
@@ -95,6 +102,16 @@ class FragmentPersonaNatural : Fragment() {
                 ?.addToBackStack(null)
                 ?.commit()
         }
+
+        binding.btnLimpiar.setOnClickListener {
+            binding.etCedula.text?.clear()
+            binding.etIngresos.text?.clear()
+            binding.etGastos.text?.clear()
+            binding.etAhorros.text?.clear()
+            binding.etDeudas.text?.clear()
+            binding.tvResultado.text = ""
+        }
+
 
         return binding.root
     }

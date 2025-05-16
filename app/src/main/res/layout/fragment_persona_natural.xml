@@ -32,20 +32,15 @@
             android:text="Cédula"
             android:textSize="16sp"
             android:textColor="#555555"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp" />
         <EditText
             android:id="@+id/etCedula"
             style="@style/EditTextEstilo"
             android:hint="Ej: 1234567890"
             android:inputType="number"
-            android:background="@drawable/input_background" />
-
-        <!-- Botón Cargar -->
-        <Button
-            android:id="@+id/btnCargar"
-            style="@style/BotonSecundario"
-            android:text="Cargar Datos"
-            android:layout_marginTop="12dp" />
+            android:background="@drawable/input_background"
+            android:minHeight="48dp"
+            android:paddingVertical="12dp" />
 
         <!-- Ingresos Mensuales -->
         <TextView
@@ -54,13 +49,15 @@
             android:text="Ingresos Mensuales"
             android:textSize="16sp"
             android:textColor="#555555"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp" />
         <EditText
             android:id="@+id/etIngresos"
             style="@style/EditTextEstilo"
             android:hint="Ej: 2000000"
             android:inputType="numberDecimal"
-            android:background="@drawable/input_background" />
+            android:background="@drawable/input_background"
+            android:minHeight="48dp"
+            android:paddingVertical="12dp" />
 
         <!-- Gastos Mensuales -->
         <TextView
@@ -69,13 +66,15 @@
             android:text="Gastos Mensuales"
             android:textSize="16sp"
             android:textColor="#555555"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp" />
         <EditText
             android:id="@+id/etGastos"
             style="@style/EditTextEstilo"
             android:hint="Ej: 1500000"
             android:inputType="numberDecimal"
-            android:background="@drawable/input_background" />
+            android:background="@drawable/input_background"
+            android:minHeight="48dp"
+            android:paddingVertical="12dp" />
 
         <!-- Ahorros Totales -->
         <TextView
@@ -84,13 +83,15 @@
             android:text="Ahorros Totales"
             android:textSize="16sp"
             android:textColor="#555555"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp" />
         <EditText
             android:id="@+id/etAhorros"
             style="@style/EditTextEstilo"
             android:hint="Ej: 5000000"
             android:inputType="numberDecimal"
-            android:background="@drawable/input_background" />
+            android:background="@drawable/input_background"
+            android:minHeight="48dp"
+            android:paddingVertical="12dp" />
 
         <!-- Deudas Totales -->
         <TextView
@@ -99,27 +100,46 @@
             android:text="Deudas Totales"
             android:textSize="16sp"
             android:textColor="#555555"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp" />
         <EditText
             android:id="@+id/etDeudas"
             style="@style/EditTextEstilo"
             android:hint="Ej: 3000000"
             android:inputType="numberDecimal"
-            android:background="@drawable/input_background" />
+            android:background="@drawable/input_background"
+            android:minHeight="48dp"
+            android:paddingVertical="12dp" />
 
         <!-- Botón para calcular -->
         <Button
             android:id="@+id/btnCalcular"
             style="@style/BotonPrimario"
             android:text="Calcular Salud Financiera"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="16dp" />
+
+        <!-- Botón Cargar -->
+        <Button
+            android:id="@+id/btnCargar"
+            style="@style/BotonSecundario"
+            android:text="Cargar Datos"
+            android:background="@drawable/btn_rounded_blue"
+            android:layout_marginTop="16dp" />
+
+        <!-- Botón Limpiar Campos -->
+        <Button
+            android:id="@+id/btnLimpiar"
+            style="@style/BotonSecundario"
+            android:text="Limpiar Campos"
+            android:background="@drawable/btn_rounded_red"
+            android:layout_marginTop="16dp" />
+
 
         <!-- Botón de Regreso -->
         <Button
             android:id="@+id/btnRegresar"
             style="@style/BotonSecundario"
             android:text="Regresar"
-            android:layout_marginTop="28dp" />
+            android:layout_marginTop="16dp" />
 
         <!-- Resultado (tarjeta) -->
         <FrameLayout

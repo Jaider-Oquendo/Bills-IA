@@ -25,7 +25,8 @@
             android:layout_marginBottom="24dp"
             android:textAlignment="center" />
 
-        <!-- Campos de texto mejorados -->
+        <!-- Campos en orden correcto -->
+
         <EditText
             android:id="@+id/etRazonSocial"
             style="@style/EditTextEstilo"
@@ -57,6 +58,16 @@
             android:layout_marginBottom="16dp"/>
 
         <EditText
+            android:id="@+id/etVentas"
+            style="@style/EditTextEstilo"
+            android:hint="Ventas"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
             android:id="@+id/etUtilidadOperacional"
             style="@style/EditTextEstilo"
             android:hint="Utilidad Operacional"
@@ -70,16 +81,6 @@
             android:id="@+id/etDepreciaciones"
             style="@style/EditTextEstilo"
             android:hint="Depreciaciones"
-            android:inputType="numberDecimal"
-            android:background="@drawable/input_background"
-            android:padding="16dp"
-            android:minHeight="48dp"
-            android:layout_marginBottom="16dp"/>
-
-        <EditText
-            android:id="@+id/etVentas"
-            style="@style/EditTextEstilo"
-            android:hint="Ventas"
             android:inputType="numberDecimal"
             android:background="@drawable/input_background"
             android:padding="16dp"
@@ -106,6 +107,7 @@
             android:minHeight="48dp"
             android:layout_marginBottom="16dp"/>
 
+        <!-- Campo Proveedores reubicado lógicamente -->
         <EditText
             android:id="@+id/etProveedores"
             style="@style/EditTextEstilo"
@@ -117,9 +119,9 @@
             android:layout_marginBottom="16dp"/>
 
         <EditText
-            android:id="@+id/etImpuestos"
+            android:id="@+id/etDeudaFinanciera"
             style="@style/EditTextEstilo"
-            android:hint="Impuestos"
+            android:hint="Deuda Financiera"
             android:inputType="numberDecimal"
             android:background="@drawable/input_background"
             android:padding="16dp"
@@ -146,17 +148,31 @@
             android:minHeight="48dp"
             android:layout_marginBottom="16dp"/>
 
+        <!-- Campo adicional: Tasa de Impuesto -->
         <EditText
-            android:id="@+id/etDeudaFinanciera"
+            android:id="@+id/etTasaImpuestos"
             style="@style/EditTextEstilo"
-            android:hint="Deuda Financiera"
+            android:hint="Tasa de impuestos (%)"
             android:inputType="numberDecimal"
             android:background="@drawable/input_background"
             android:padding="16dp"
             android:minHeight="48dp"
             android:layout_marginBottom="16dp"/>
 
+        <EditText
+            android:id="@+id/etImpuestos"
+            style="@style/EditTextEstilo"
+            android:hint="Impuestos"
+            android:inputType="numberDecimal"
+            android:background="@drawable/input_background"
+            android:padding="16dp"
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"/>
+
         <!-- Botones -->
+
+
         <Button
             android:id="@+id/btnGuardarEmpresa"
             style="@style/BotonPrimario"
@@ -164,17 +180,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp" />
+
+
+        <Button
+            android:id="@+id/btnCargarEmpresa"
+            style="@style/BotonSecundario"
+            android:text="📂 Cargar datos por NIT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="@drawable/btn_rounded_blue"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnLimpiarCampos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Limpiar Campos"
+            android:padding="16dp"
+            android:background="@drawable/btn_rounded_red"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp" />
 
         <Button
             android:id="@+id/btnRegresarSeleccion"
             style="@style/BotonSecundario"
             android:text="🔙 Regresar a la Selección"
-            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:layout_marginBottom="16dp"/>
+            android:background="@drawable/btn_rounded_red"
+            android:layout_marginBottom="16dp" />
 
     </LinearLayout>
 </ScrollView>
