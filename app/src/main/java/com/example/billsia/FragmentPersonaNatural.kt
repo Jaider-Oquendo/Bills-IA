@@ -44,11 +44,13 @@ class FragmentPersonaNatural : Fragment() {
                 binding.tvResultado.text = "Por favor, completa todos los campos."
                 return@setOnClickListener
             }
-
-            val ingresos = ingresosStr.toDouble()
-            val gastos = gastosStr.toDouble()
-            val ahorros = ahorrosStr.toDouble()
-            val deudas = deudasStr.toDouble()
+            fun parseNumber(input: String): Double {
+                return input.replace(".", "").replace(",", ".").toDouble()
+            }
+            val ingresos = parseNumber(ingresosStr)
+            val gastos = parseNumber(gastosStr)
+            val ahorros = parseNumber(ahorrosStr)
+            val deudas = parseNumber(deudasStr)
 
             val puntaje = (ahorros - deudas) + (ingresos - gastos)
             val resultado = when {
