@@ -49,10 +49,17 @@ class TributariaFragment : Fragment() {
             }
 
             try {
-                val ingreso = ingresoStr.toDouble()
-                val patrimonio = patrimonioStr.toDouble()
-                val consumo = consumoStr.toDouble()
-                val compras = comprasStr.toDouble()
+                fun limpiarNumero(valor: String): Double {
+                    val limpio = valor.replace("[^\\d,.-]".toRegex(), "") // elimina $ y .
+                        .replace(".", "")  // quita puntos de miles
+                        .replace(",", ".") // reemplaza coma decimal por punto
+                    return limpio.toDouble()
+                }
+
+                val ingreso = limpiarNumero(ingresoStr)
+                val patrimonio = limpiarNumero(patrimonioStr)
+                val consumo = limpiarNumero(consumoStr)
+                val compras = limpiarNumero(comprasStr)
 
                 val uvt = 49799  // Valor UVT año 2025
                 val umbralIngreso = 1400 * uvt
